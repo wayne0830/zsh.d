@@ -7,7 +7,7 @@ zsh.d
             . $1  
         fi  
     }  
-    for zsh in $HOME/.zsh.d/*; do  
+    for zsh in $HOME/.zsh.d/*.zsh; do  
         load_zsh $zsh  
         done  
 
