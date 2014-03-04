@@ -1,5 +1,6 @@
 setopt AUTO_LIST
 setopt AUTO_MENU
+
 #开启此选项，补全时会直接选中菜单项
 #setopt MENU_COMPLETE
  
@@ -26,7 +27,7 @@ zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _appr
 #路径补全
 zstyle ':completion:*' expand 'yes'
 zstyle ':completion:*' squeeze-shlashes 'yes'
-zstyle ':completion::complete:*' '\\'
+zstyle ':completion::complete:*' '//'
  
 #彩色补全菜单
 eval $(dircolors -b)
@@ -64,26 +65,26 @@ zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directori
 
 ##空行(光标在行首)补全 "cd " {{{
 user-complete(){
-case $BUFFER in
-"" )                       # 空行填入 "cd "
-BUFFER="cd "
-zle end-of-line
-zle expand-or-complete
-;;
-"cd --" )                  # "cd --" 替换为 "cd +"
-BUFFER="cd +"
-zle end-of-line
-zle expand-or-complete
-;;
-"cd +-" )                  # "cd +-" 替换为 "cd -"
-BUFFER="cd -"
-zle end-of-line
-zle expand-or-complete
-;;
-* )
-zle expand-or-complete
-;;
-esac
+    case $BUFFER in
+    "" )                       # 空行填入 "cd "
+    BUFFER="cd "
+    zle end-of-line
+    zle expand-or-complete
+    ;;
+    "cd --" )                  # "cd --" 替换为 "cd +"
+    BUFFER="cd +"
+    zle end-of-line
+    zle expand-or-complete
+    ;;
+    "cd +-" )                  # "cd +-" 替换为 "cd -"
+    BUFFER="cd -"
+    zle end-of-line
+    zle expand-or-complete
+    ;;
+    * )
+    zle expand-or-complete
+    ;;
+    esac
 }
 zle -N user-complete
 bindkey "\t" user-complete
