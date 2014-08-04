@@ -11,3 +11,7 @@ zsh.d
         load_zsh $zsh  
         done  
 
+
+_asdf_
+__gaefa__
+___htre___
